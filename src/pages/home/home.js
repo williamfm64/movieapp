@@ -5,8 +5,17 @@ import { image_path } from '../../configs/paths';
 import './home.css'
 
 function Home(){
+    const {categoria = "popular", pag = 1} = useParams();
 
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+
+        const num = parseInt(pag, 10);
+
+        setPage(num);
+
+    }, [pag, categoria])
 
     const pageFw = () => {
       setPage(page + 1);
@@ -21,21 +30,7 @@ function Home(){
       
     };
 
-    const {categoria = "popular", pag = 1} = useParams();
-
-    console.log(categoria)
-    console.log(page)
-    console.log(pag)
-
     const [movies, setMovies] = useState([])
-
-    useEffect(() => {
-
-        const num = parseInt(pag, 10);
-
-        setPage(num);
-
-    }, [pag, categoria])
 
     useEffect(() => {
 
@@ -45,7 +40,7 @@ function Home(){
             setMovies(data.results)
         })
 
-    }, [categoria, page, pag])
+    }, [page, pag])
 
     return(
         <div id="main">
