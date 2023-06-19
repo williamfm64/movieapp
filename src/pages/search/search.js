@@ -6,19 +6,23 @@ import '../home/home.css'
 
 function Search(){
 
-    const { texto = "a procura"} = useParams();
-
-    console.log(texto)
+    const { texto = "a procura", pag} = useParams();
 
     const [page, setPage] = useState(1);
 
+    console.log(texto)
+    console.log(page)
+    console.log(pag)
+
     const pageFw = () => {
       setPage(page + 1);
+      window.scrollTo(0, 0);
     };
   
     const pageBack = () => {
         if(page > 1){
             setPage(page - 1);
+            window.scrollTo(0, 0);
         }
       
     };
@@ -38,9 +42,11 @@ function Search(){
 
     useEffect(() => {
 
-        setPage(1);
+        const num = parseInt(pag, 10);
 
-    }, [texto])
+        setPage(num);
+
+    }, [pag, texto])
 
     return(
         <div id="main">
@@ -49,7 +55,7 @@ function Search(){
                     return(
                         <li key={movie.id}>
                             <div className='banner'>
-                            <Link to={`/details/${movie.id}/search`}>
+                            <Link to={`/details/${movie.id}/search/${page}/${texto}`}>
                                 <img src={`${image_path}${movie.poster_path}`} alt={`${image_path}${movie.poster_path}`}/>
                             </Link>
                             <div className='legenda'>

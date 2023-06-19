@@ -6,7 +6,7 @@ import './details.css'
 
 function Details(){
 
-    const { id, categoria } = useParams()
+    const { id, categoria, pag, texto = "" } = useParams()
 
     console.log(id);
     console.log(categoria);
@@ -46,7 +46,7 @@ function Details(){
                             </div>
                     <span>{movie.sinopse}</span>
                     <span id="releaseDate">Data de estréia: {movie.releaseDate}</span>
-                    <Link to={`/${categoria}`}><button>Voltar</button></Link>
+                    <Link to={`/${categoria}/${pag}/${texto}`}><button>Voltar</button></Link>
                 </div>
             </div>
         </div>

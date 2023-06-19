@@ -10,35 +10,42 @@ function Home(){
 
     const pageFw = () => {
       setPage(page + 1);
+      window.scrollTo(0, 0);
     };
   
     const pageBack = () => {
         if(page > 1){
             setPage(page - 1);
+            window.scrollTo(0, 0);
         }
       
     };
 
-    const {categoria = "popular"} = useParams();
+    const {categoria = "popular", pag = 1} = useParams();
+
+    console.log(categoria)
+    console.log(page)
+    console.log(pag)
 
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
 
-        setPage(1);
+        const num = parseInt(pag, 10);
 
-    }, [categoria])
+        setPage(num);
+
+    }, [pag, categoria])
 
     useEffect(() => {
 
         fetch(`https://api.themoviedb.org/3/movie/${categoria}?language=pt-BR&page=${page}`, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data.results)
             setMovies(data.results)
         })
 
-    }, [categoria, page])
+    }, [categoria, page, pag])
 
     return(
         <div id="main">
@@ -47,7 +54,7 @@ function Home(){
                     return(
                         <li key={movie.id}>
                             <div className='banner'>
-                            <Link to={`/details/${movie.id}/${categoria}`}>
+                            <Link to={`/details/${movie.id}/${categoria}/${page}`}>
                                 <img src={`${image_path}${movie.poster_path}`} alt={`${image_path}${movie.poster_path}`}/>
                             </Link>
                             <div className='legenda'>

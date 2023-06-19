@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './header.css'
 
 function Topbar(){
 
-     const [texto, setTexto] = useState('');
+    const [texto, setTexto] = useState('');
 
     const handleTextoChange = (event) => {
       setTexto(event.target.value);
+    };
+
+    const linkRef = useRef(null);
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+        event.preventDefault();
+        // Executar ação desejada, como acionar o Link
+        linkRef.current.click();
+        }
     };
 
     return(
@@ -17,22 +27,22 @@ function Topbar(){
             <ul>
 
                 <li>
-                    <Link to="/popular" className='link'>Populares</Link>
+                    <Link to="/popular/1" className='link'>Populares</Link>
                 </li>
                 <li>
-                    <Link to="/top_rated" className='link'>Melhores Ever</Link>
+                    <Link to="/top_rated/1" className='link'>Melhores Ever</Link>
                 </li>
                 <li>
-                    <Link to="/login" className='link'>Minha Lista</Link>
-                </li>
-                <li>
-                    <Link to="/search" className='link'>Pesquisa</Link>
+                    <Link to="/search/1/nada" className='link'>Pesquisa</Link>
                 </li>
                 <li id='search-box'>
-                    <input type="text" value={texto} onChange={handleTextoChange} />
+                    <input type="text" onKeyDown={handleKeyDown} value={texto} onChange={handleTextoChange} />
                 </li>
                 <li>
-                    <Link className='link' to={`/search/${texto}`}>Go!</Link>
+                    <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
+                        <Link ref={linkRef} className='link' to={`/search/1/${texto}`}>Go!</Link>
+                    </div>
+                    
                 </li>
 
             </ul>
