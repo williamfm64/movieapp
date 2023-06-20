@@ -36,7 +36,7 @@ function Home(){
             setMovies(data.results)
         })
 
-    }, [page, pag, categoria])
+    }, [pag, categoria, page])
 
     return(
         <div id="main">
