@@ -15,7 +15,6 @@ function Topbar(){
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
         event.preventDefault();
-        // Executar ação desejada, como acionar o Link
         linkRef.current.click();
         }
     };

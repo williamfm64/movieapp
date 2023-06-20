@@ -18,7 +18,6 @@ function Details(){
         fetch(`https://api.themoviedb.org/3/movie/${id}?language=pt-BR`, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const movie = {
                 id,
                 title: data.title,
@@ -29,7 +28,6 @@ function Details(){
             }
 
             setMovie(movie)
-            console.log(movie)
         })
 
     }, [id])

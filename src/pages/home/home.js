@@ -10,11 +10,8 @@ function Home(){
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-
         const num = parseInt(pag, 10);
-
         setPage(num);
-
     }, [pag, categoria])
 
     const pageFw = () => {
@@ -27,7 +24,6 @@ function Home(){
             setPage(page - 1);
             window.scrollTo(0, 0);
         }
-      
     };
 
     const [movies, setMovies] = useState([])

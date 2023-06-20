@@ -10,10 +10,6 @@ function Search(){
 
     const [page, setPage] = useState(1);
 
-    console.log(texto)
-    console.log(page)
-    console.log(pag)
-
     const pageFw = () => {
       setPage(page + 1);
       window.scrollTo(0, 0);
@@ -34,7 +30,6 @@ function Search(){
         fetch(`https://api.themoviedb.org/3/search/movie?query=${texto}&include_adult=false&language=pt-BR&page=${page}`, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data.results)
             setMovies(data.results)
         })
 
