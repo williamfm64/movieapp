@@ -12,6 +12,7 @@ root.render(
     <Topbar />
     <Routes>
       <Route path="/:categoria/:pag" element={<Home />} />
+      <Route path="/:categoria" element={<Home />} />
       <Route path="/" element={<Home />} />
       <Route path="/details/:id/:categoria/:pag/:texto" element={<Details />}/>
       <Route path="/details/:id/:categoria/:pag" element={<Details />}/>

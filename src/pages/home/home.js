@@ -36,7 +36,17 @@ function Home(){
             setMovies(data.results)
         })
 
-    }, [pag, categoria, page])
+    }, [pag, page])
+
+    useEffect(() => {
+
+        fetch(`https://api.themoviedb.org/3/movie/${categoria}?language=pt-BR&page=1`, options)
+        .then(response => response.json())
+        .then(data => {
+            setMovies(data.results)
+        })
+
+    }, [categoria])
 
     return(
         <div id="main">

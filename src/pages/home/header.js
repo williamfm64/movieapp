@@ -26,10 +26,10 @@ function Topbar(){
             <ul>
 
                 <li>
-                    <Link to="/popular/1" className='link'>Populares</Link>
+                    <Link to="/popular/" className='link'>Populares</Link>
                 </li>
                 <li>
-                    <Link to="/top_rated/1" className='link'>Melhores Ever</Link>
+                    <Link to="/top_rated/" className='link'>Melhores Ever</Link>
                 </li>
                 <li>
                     <Link to="/search/1/nada" className='link'>Pesquisa</Link>
