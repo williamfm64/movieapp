@@ -34,6 +34,7 @@ function Home(){
         .then(response => response.json())
         .then(data => {
             setMovies(data.results)
+            console.log(data.results)
         })
 
     }, [pag, page])
